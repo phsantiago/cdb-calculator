@@ -27,16 +27,17 @@ describe('AppController', () => {
           "cdbRate": 103.5,
           "currentDate":"2016-11-16"
         }
-expect(appController.cdb(mockConsumer)).toBe([
-{
-            "date": "2016-12-26",
+
+        expect(appController.cdb(mockConsumer)).toBe([
+          {
+            "date": "2016-11-14",
             "unitPrice": 1000.53397
           },
           {
-            "date": "2016-12-25",
+            "date": "2016-11-16",
             "unitPrice": 1001.06822
           }
-          ]);
+        ]);
       });
     });
   });
