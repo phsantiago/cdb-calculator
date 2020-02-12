@@ -1,6 +1,20 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import marketData from './marketData.json';
+
+jest.mock('./marketData.json', () => ([
+  {
+    "sSecurityName": "CDI",
+    "dtDate": "16/11/2016",
+    "dLastTradePrice": 13.88
+  },
+  {
+    "sSecurityName": "CDI",
+    "dtDate": "14/11/2016",
+    "dLastTradePrice": 13.88
+  },
+]));
 
 describe('AppController', () => {
   let appController: AppController;
@@ -22,6 +36,7 @@ describe('AppController', () => {
   describe('/cdb/post-fixed', () => {
     describe('given an investment date, cdbRate and currentDate', () => {
       it('should return a daily unit price', () => {
+
         const mockConsumer = {
           "investmentDate":"2016-11-14",
           "cdbRate": 103.5,
