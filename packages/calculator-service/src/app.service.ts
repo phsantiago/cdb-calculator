@@ -14,8 +14,7 @@ type postFixedCdbDTO = {
   price?: number
 }
 
-/* type cdbCalcResult = Array<datePrice>; */
-const calculateUnitPrice = a => a;
+type cdbCalcResult = Array<datePrice>;
 
 @Injectable()
 export class AppService {
@@ -23,9 +22,19 @@ export class AppService {
     return 'Health check ok!';
   }
   calculateTCDI(CDI) {
-    return 1
+    const TCDI = Math.pow((CDI/100)+1, 1/252) - 1
+    return Number(TCDI.toFixed(8));
   }
-  calculateCDB({ investmentDate, currentDate })/*: cdbCalcResult*/ {
+
+  acumulatedTCDI({ n, tcdi, tcdb, price }) {
+    let resultTCDI = 1;
+    for(let i = 0; i <= n; i++) {
+      resultTCDI *= (1 + tcdi * tcdb / 100)
+    }
+    return Number(resultTCDI * price);
+  }
+
+  calculateCDB({ investmentDate, currentDate, cdbRate, price = 1000 }): cdbCalcResult {
     const momentInvestmentDate = moment(investmentDate, "YYYY-MM-DD");
     const momentCurrentDate = moment(currentDate, "YYYY-MM-DD");
     const treatedMarketData = marketData
@@ -38,10 +47,23 @@ export class AppService {
 
     const sorted = marketDataSlice.sort(({date: dateA}, {date: dateB}) => dateA.unix() - dateB.unix())
 
-    const calculated = sorted.map(({ dLastTradePrice, ...rest }) => ({ unitPrice: calculateUnitPrice(dLastTradePrice), ...rest}))
+    const calculated = sorted.map(({ dLastTradePrice, ...rest }, index) =>
+      ({ 
+        unitPrice: this.acumulatedTCDI({
+          n: index,
+          tcdi: this.calculateTCDI(dLastTradePrice),
+          tcdb: cdbRate,
+          price
+        }),
+        ...rest,
+      })
+    );
 
-    const dateFormated = calculated.map(({ date, ...rest }) => ({ date: date.format('YYYY-MM-DD'), ...rest }));
-    return dateFormated;
+    const formated = calculated
+      .map(({ date, ...rest }) => ({ date: date.format('YYYY-MM-DD'), ...rest }))
+      .map(({ unitPrice, ...rest }) => ({ unitPrice: Number(unitPrice.toFixed(5)), ...rest }));
+
+    return formated;
   }
 }
 

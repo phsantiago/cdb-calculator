@@ -28,7 +28,7 @@ describe('AppController', () => {
           "currentDate":"2016-11-16"
         }
 
-        expect(appController.cdb(mockConsumer)).toBe([
+        expect(appController.cdb(mockConsumer)).toEqual([
           {
             "date": "2016-11-14",
             "unitPrice": 1000.53397
