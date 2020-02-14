@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { AppController } from './controller';
+import { AppService } from './service';
 import marketData from './marketData.json';
 
 jest.mock('./marketData.json', () => ([
