@@ -407,6 +407,13 @@
     optional "0.1.4"
     tslib "1.10.0"
 
+"@now/node@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@now/node/-/node-1.4.1.tgz#a07e22abb34d892e77fef1471f35518ddb39dbfc"
+  integrity sha512-EjP/pdBMKsEMCGQ1OLLmBGnjA3QZG1erYTrMqmDVqypeQsY1UUFTY4h1C4d6WNq33qk/nMxpcJzuAhxt+nLQyg==
+  dependencies:
+    "@types/node" "*"
+
 "@nuxtjs/opencollective@0.2.2":
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@nuxtjs/opencollective/-/opencollective-0.2.2.tgz#26a761ebf588cc92a422d7cee996a66bd6e2761e"
