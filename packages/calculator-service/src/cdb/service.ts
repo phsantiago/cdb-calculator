@@ -31,7 +31,7 @@ const dateDescending = ({ date: dateA }, { date: dateB }) =>
   dateA.unix() - dateB.unix();
 
 @Injectable()
-export class AppService {
+export class CdbService {
   calculateTCDI(CDI) {
     const TCDI = Math.pow(CDI / 100 + 1, 1 / 252) - 1;
     return Number(TCDI.toFixed(8));

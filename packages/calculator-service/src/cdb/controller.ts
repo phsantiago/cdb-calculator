@@ -3,11 +3,11 @@ import {
   InputCDBcalculation,
   CalculationResult,
 } from '@cdb-calculator/typings';
-import { AppService } from './service';
+import { CdbService } from './service';
 
 @Controller('/cdb')
-export class AppController {
-  constructor(private readonly appService: AppService) {}
+export class CdbController {
+  constructor(private readonly appService: CdbService) {}
 
   @Post('/post-fixed')
   @HttpCode(200)
