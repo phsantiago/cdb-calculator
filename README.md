@@ -1,3 +1,7 @@
-# cdb-calculator
+# Calculadora de CDB
 Como rodar a aplicação?
-`yarn lerna start`
+1. `yarn`
+2. `yarn start`
+
+Para rodar os testes:
+`yarn test`
