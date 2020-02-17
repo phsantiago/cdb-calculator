@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Button from "@material-ui/core/Button";
 import { styled } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import Header from "./components/Header";
 
 const GorilaButton = styled(Button)({
   background: "linear-gradient(45deg, #19c3c1 30%, #4add93 90%)",
@@ -60,11 +60,11 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+        <Header />
+        <div className="body">
           <CDBForm onSend={setTest} />
           {JSON.stringify(test)}
-        </header>
+        </div>
       </div>
     </ThemeProvider>
   );
