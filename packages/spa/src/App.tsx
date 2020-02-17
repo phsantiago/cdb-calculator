@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import green from "@material-ui/core/colors/green";
+import teal from "@material-ui/core/colors/teal";
 import Header from "./components/Header";
 import CDBForm from "./components/CDBForm";
 import Chart from "./components/Chart";
@@ -16,7 +18,7 @@ import "./App.css";
 const App = () => {
   const [isLoading, setLoading] = useState(false);
   const [result, setResult] = useState<CalculationResult>([]);
-  const onSend = async (form: InputCDBcalculation) => {
+  const onSend = async (form: InputCDBcalculation): Promise<void> => {
     setLoading(true);
     const { data } = await calculateRemote(form);
     setResult(data);
@@ -26,6 +28,8 @@ const App = () => {
     () =>
       createMuiTheme({
         palette: {
+          primary: teal,
+          secondary: green,
           type: "dark"
         }
       }),
