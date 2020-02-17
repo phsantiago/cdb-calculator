@@ -2,11 +2,18 @@ import cdbCalculation from "./index";
 import axios from "axios";
 
 describe("cdbCalculation", () => {
+  const axiosPost: any = axios.post;
+
   it("should perform a post on /cdb/post-fixed", async () => {
-    jest.spyOn(axios, "post").mockImplementation(jest.fn());
+    axiosPost.mockImplementation(jest.fn());
+    const mock = {
+      investmentDate: "2010-01-01",
+      currentDate: "2010-01-01",
+      cdbRate: 103
+    };
 
-    await cdbCalculation();
+    await cdbCalculation(mock);
 
-    expect(axios.post).toBeCalledWith("/cdb/post-fixed", {});
+    expect(axiosPost).toBeCalledWith("/cdb/post-fixed", mock);
   });
 });
