@@ -20,12 +20,12 @@
     "react-scripts": "3.4.0",
     "recharts": "^2.0.0-beta.1",
     "styled-components": "^5.0.1",
-    "typescript": "~3.7.2"
+    "typescript": "^3.7.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -44,8 +44,11 @@
     ]
   },
   "devDependencies": {
+    "@types/jest": "^25.1.2",
     "@types/react-lottie": "^1.2.3",
     "@types/recharts": "^1.8.5",
-    "@types/styled-components": "^4.4.3"
+    "@types/styled-components": "^4.4.3",
+    "jest-canvas-mock": "^2.2.0",
+    "ts-jest": "^25.2.0"
   }
 }

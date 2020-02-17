@@ -20,35 +20,39 @@ const CDBForm = ({ onSend }: Props) => {
   const onChange = (field: keyof InputCDBcalculation) => (
     event: React.BaseSyntheticEvent
   ) => setData({ ...data, [field]: event.target.value });
-
   return (
     <>
       <Input
         onChange={onChange("investmentDate")}
-        placeholder="Data do investimento"
+        label="Data do investimento"
         value={data.investmentDate}
+        inputProps={{ "data-testid": "investmentDate" }}
       />
       <br />
       <Input
         onChange={onChange("currentDate")}
         value={data.currentDate}
-        placeholder="Data resultado"
+        label="Data resultado"
+        inputProps={{ "data-testid": "currentDate" }}
       />
       <br />
       <Input
         onChange={onChange("price")}
         value={data.price}
-        placeholder="Valor investido"
+        label="Valor investido"
       />
       <br />
       <Input
         onChange={onChange("cdbRate")}
         value={data.cdbRate}
-        placeholder="Taxa CDB"
+        label="Taxa CDB"
+        inputProps={{ "data-testid": "cdbRate" }}
       />
       <br />
       <br />
-      <GorilaButton onClick={onClick}>Calcular</GorilaButton>
+      <GorilaButton data-testid="send" onClick={onClick}>
+        Calcular
+      </GorilaButton>
     </>
   );
 };

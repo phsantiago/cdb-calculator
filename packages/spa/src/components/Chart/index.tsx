@@ -30,7 +30,9 @@ const Chart: React.FC<Props> = ({ data }) => {
         <Bar dataKey="unitPrice" barSize={5} fill="#40d79f" />
       </BarChart>
       <div>Valor inicial: {initial.unitPrice.toLocaleString("pt-BR")} R$</div>
-      <div>Valor final: {final.unitPrice.toLocaleString("pt-BR")} R$</div>
+      <div data-testid="final-value">
+        Valor final: {final.unitPrice.toLocaleString("pt-BR")} R$
+      </div>
       <br />
     </>
   );
