@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { AppController } from './controller';
+import { AppService } from './service';
 import marketData from './marketData.json';
 
 jest.mock('./marketData.json', () => ([
@@ -28,11 +28,6 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('root', () => {
-    it('should return "Health check ok!"', () => {
-      expect(appController.getHello()).toBe('Health check ok!');
-    });
-  });
   describe('/cdb/post-fixed', () => {
     describe('given an investment date, cdbRate and currentDate', () => {
       it('should return a daily unit price', () => {

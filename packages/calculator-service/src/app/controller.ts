@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, HttpCode } from '@nestjs/common';
-import { AppService } from './app.service';
+import { AppService } from './service';
 
 @Controller()
 export class AppController {
@@ -8,11 +8,5 @@ export class AppController {
   @Get()
   getHello(): string {
     return this.appService.getHello();
-  }
-
-  @Post('/cdb/post-fixed')
-  @HttpCode(200)
-  cdb(@Body() postfixedDTO): any {
-    return this.appService.calculateCDB(postfixedDTO);
   }
 }
