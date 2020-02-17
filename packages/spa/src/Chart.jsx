@@ -1,26 +1,24 @@
-import React from 'react'
-import { Chart } from 'react-charts'
+import React from "react";
+import { Chart } from "react-charts";
 
-  const data = {
-    series: 8,
-    datums: 3,
-    dataType: 'ordinal'
-  }
+const data = {
+  series: 8,
+  datums: 3,
+  dataType: "ordinal"
+};
 export default () => {
   const series = React.useMemo(
     () => ({
-      type: 'bar'
+      type: "bar"
     }),
     []
-  )
+  );
   const axes = React.useMemo(
     () => [
-      { primary: true, type: 'ordinal', position: 'bottom' },
-      { position: 'left', type: 'linear', stacked: false }
+      { primary: true, type: "ordinal", position: "bottom" },
+      { position: "left", type: "linear", stacked: false }
     ],
     []
-  )
-  return (
-    <Chart data={data} series={series} axes={axes} tooltip />
-  )
-}
+  );
+  return <Chart data={data} series={series} axes={axes} tooltip />;
+};
