@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppController } from './controller';
-import { AppService } from './service';
+import { CdbController } from './controller';
+import { CdbService } from './service';
 import marketData from './marketData.json';
 
 jest.mock('./marketData.json', () => ([
@@ -17,15 +17,15 @@ jest.mock('./marketData.json', () => ([
 ]));
 
 describe('AppController', () => {
-  let appController: AppController;
+  let appController: CdbController;
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      controllers: [AppController],
-      providers: [AppService],
+      controllers: [CdbController],
+      providers: [CdbService],
     }).compile();
 
-    appController = app.get<AppController>(AppController);
+    appController = app.get<CdbController>(CdbController);
   });
 
   describe('/cdb/post-fixed', () => {

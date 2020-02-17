@@ -1,10 +1,10 @@
-import { AppService } from './service';
+import { CdbService } from './service';
 
 describe('service', () => {
-  let appService: AppService;
+  let appService: CdbService;
 
   beforeEach(async () => {
-    appService = new AppService();
+    appService = new CdbService();
   });
   describe('TCDI', () => {
     describe('given 13.88', () => {
