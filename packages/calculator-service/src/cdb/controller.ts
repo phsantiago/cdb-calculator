@@ -1,12 +1,9 @@
 import { Controller, Get, Post, Body, HttpCode } from '@nestjs/common';
+import {
+  InputCDBcalculation,
+  CalculationResult,
+} from '@cdb-calculator/typings';
 import { AppService } from './service';
-
-type postFixedCdbDTO = {
-  investmentDate: string,
-  cdbRate: number,
-  currentDate: string,
-  price?: number
-}
 
 @Controller('/cdb')
 export class AppController {
@@ -14,8 +11,7 @@ export class AppController {
 
   @Post('/post-fixed')
   @HttpCode(200)
-  // TODO: remover any
-  cdb(@Body() postfixedDTO: postFixedCdbDTO): any {
+  cdb(@Body() postfixedDTO: InputCDBcalculation): CalculationResult {
     return this.appService.calculateCDB(postfixedDTO);
   }
 }
