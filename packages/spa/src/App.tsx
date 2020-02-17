@@ -1,26 +1,73 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Button from "@material-ui/core/Button";
+import { styled } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
-const App = () => {
+const GorilaButton = styled(Button)({
+  background: "linear-gradient(45deg, #19c3c1 30%, #4add93 90%)",
+  border: 0,
+  borderRadius: 3,
+  boxShadow: "0 3px 5px 2px rgba(74, 219, 150, .3)",
+  color: "white",
+  fontWeight: 600,
+  height: 48,
+  padding: "0 30px"
+});
+
+const Input = (props: any) => <TextField {...props} />;
+
+const CDBForm = ({ onSend }: any) => {
+  const [data, setData] = useState({});
+  const onClick = () => onSend(data);
+
+  const onChange = (field: any) => (event: any) =>
+    setData({ ...data, [field]: event.target.value });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Input
+        onChange={onChange("investmentDate")}
+        placeholder="Data do investimento"
+      />
+      <br />
+      <Input onChange={onChange("resultDate")} placeholder="Data resultado" />
+      <br />
+      <Input
+        onChange={onChange("investmentValue")}
+        placeholder="Valor investido"
+      />
+      <br />
+      <Input onChange={onChange("cdbRate")} placeholder="Taxa CDB" />
+      <br />
+      <GorilaButton onClick={onClick}>Calcular</GorilaButton>
+    </>
   );
-}
+};
+const App = () => {
+  const [test, setTest] = useState({});
+  const theme = React.useMemo(
+    () =>
+      createMuiTheme({
+        palette: {
+          type: "dark"
+        }
+      }),
+    []
+  );
+  return (
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <CDBForm onSend={setTest} />
+          {JSON.stringify(test)}
+        </header>
+      </div>
+    </ThemeProvider>
+  );
+};
 
 export default App;
