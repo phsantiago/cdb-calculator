@@ -36,13 +36,13 @@ const App = () => {
       <div className="App background">
         <LoadingOverlay active={isLoading} />
         <div className="body">
-          {!Boolean(result.length) && (
+          {Boolean(result.length) && (
             <>
-              <Chart />
+              <Chart data={result} />
               <GorilaButton onClick={() => setResult([])}>Voltar</GorilaButton>
             </>
           )}
-          {Boolean(result.length) && (
+          {!Boolean(result.length) && (
             <>
               <Header />
               <CDBForm onSend={onSend} />
