@@ -2,7 +2,7 @@ import cdbCalculation from "./index";
 import axios from "axios";
 
 describe("cdbCalculation", () => {
-  const axiosPost: any = axios.post;
+  const axiosPost = axios.post as jest.Mock;
 
   it("should perform a post on /cdb/post-fixed", async () => {
     axiosPost.mockImplementation(jest.fn());
