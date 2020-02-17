@@ -11,9 +11,9 @@ const Input = (props: any) => <TextField {...props} />;
 
 const CDBForm = ({ onSend }: Props) => {
   const [data, setData] = useState<InputCDBcalculation>({
-    investmentDate: "",
-    cdbRate: 0,
-    currentDate: ""
+    investmentDate: "2016-04-01",
+    cdbRate: 103,
+    currentDate: "2016-08-06"
   });
   const onClick = () => onSend(data);
 
@@ -26,13 +26,26 @@ const CDBForm = ({ onSend }: Props) => {
       <Input
         onChange={onChange("investmentDate")}
         placeholder="Data do investimento"
+        value={data.investmentDate}
       />
       <br />
-      <Input onChange={onChange("currentDate")} placeholder="Data resultado" />
+      <Input
+        onChange={onChange("currentDate")}
+        value={data.currentDate}
+        placeholder="Data resultado"
+      />
       <br />
-      <Input onChange={onChange("price")} placeholder="Valor investido" />
+      <Input
+        onChange={onChange("price")}
+        value={data.price}
+        placeholder="Valor investido"
+      />
       <br />
-      <Input onChange={onChange("cdbRate")} placeholder="Taxa CDB" />
+      <Input
+        onChange={onChange("cdbRate")}
+        value={data.cdbRate}
+        placeholder="Taxa CDB"
+      />
       <br />
       <br />
       <GorilaButton onClick={onClick}>Calcular</GorilaButton>

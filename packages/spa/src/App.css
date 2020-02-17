@@ -1,6 +1,8 @@
 .App {
   text-align: center;
   font-family: 'Roboto', sans-serif;
+}
+.background {
   background-color: #151c1b;
   min-height: 100vh;
   height: 100%;
